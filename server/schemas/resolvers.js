@@ -1,7 +1,13 @@
 const { gql } = require('apollo-server-express');
 
+// Finish Queries and Mutations. Auth?
+// Line 19, references conversation.id
 
-// Finish Queries and Mutations.
+
+
+
+
+
 const typeDefs = gql`
     type Conversation {
         _id: ID!
@@ -33,6 +39,10 @@ const typeDefs = gql`
 
     type Mutation {
         createUser
+        createConversation
+        createMessage
+        updateMessage
+        deleteMessage
 
     }
 `;
