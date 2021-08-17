@@ -1,50 +1,29 @@
-const { gql } = require('apollo-server-express');
 
-// Finish Queries and Mutations. Auth?
-// Line 19, references conversation.id
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
+const User  = require('../models/User')
 
+const resolvers = {
+    Query:{ 
+        user: async (parent, { username }) => {
+            return User.findOne({ username });
+        }
+    },
+    Mutation:{
+        addUser: async (parent, { username, email, password})=> {
+            const user = await User.create({ username, email, password})
+            const token = signToken(user);
+            return { token, user };
 
-
-
-
-
-const typeDefs = gql`
-    type Conversation {
-        _id: ID!
-        members: [String]
-        createdAt: Date
-        updatedAt: Date
+                  
+        }
     }
+}
 
-    type Message {
-        _id: ID!
-        conversationId:
-        author: String
-        content: String
-        createdAt: Date
-        updatedAt: Date
-    }
+ 
 
-    type User {
-        _id: ID!
-        username: String!
-        email: String!
-        password: String!
-        profilePicture: String
-    }
 
-    type Query {
 
-    }
 
-    type Mutation {
-        createUser
-        createConversation
-        createMessage
-        updateMessage
-        deleteMessage
 
-    }
-`;
 
-module.exports = typeDefs;
