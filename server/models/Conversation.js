@@ -2,9 +2,12 @@ const { Schema, model } = require('mongoose');
 
 const ConversationSchema = new Schema(
     {
-        members: {
-            type: Array,
-        }
+        members:  [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ],
     },
     // Add timestamps for when conversations are created and/or updated.
     { timestamps: true }
