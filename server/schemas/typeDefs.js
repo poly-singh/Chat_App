@@ -1,4 +1,3 @@
-// Finish Queries and Mutations. Auth?
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
@@ -17,8 +16,6 @@ const typeDefs = gql`
         conversationId: [Conversation]
         author: String
         content: String
-        createdAt: Date
-        updatedAt: Date
     }
 
     type User {
@@ -31,10 +28,14 @@ const typeDefs = gql`
 
     type Query {
         user(username: String!): User
+        conversations(_id: ID): [Conversation]
+        messages(conversationId: ID): [Message]
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
+        addMessage(conversationId: ID, author: String, content: String): Message
+        addConversation(_id: ID): Conversation
     }
 `;
 

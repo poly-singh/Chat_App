@@ -1,4 +1,3 @@
-
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const User  = require('../models/User');
@@ -17,28 +16,25 @@ const resolvers = {
         // Finds all conversations that the user is included in.
         conversations: async (parent, args, context) => {
             return Conversation.find({_id: {$in: members}});
-        }
-
-        
-
+        },
 
     },
     Mutation:{
-        addUser: async (parent, { username, email, password})=> {
-            const user = await User.create({ username, email, password})
+        addUser: async (parent, args, context)=> {
+            const user = await User.create(args)
             const token = signToken(user);
             return { token, user };
         },
 
-        // addMessage: async (parent, args, context) => {
-        //     const message = await Message.create(args)
-        //     return message
-        // },
+        addMessage: async (parent, args, context) => {
+            const message = await Message.create(args)
+            return message
+        },
 
-        // addConversation: async (parent, args, context) => {
-        //     const conversation = await Conversation.create(args)
-        //     return conversation
-        // }
+        addConversation: async (parent, args, context) => {
+            const conversation = await Conversation.create(args)
+            return conversation
+        }
     }
 }
 
