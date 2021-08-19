@@ -25,7 +25,13 @@ const UserSchema = new Schema(
         profilePicture: {
             type: String,
             default: '',
-        }
+        },
+        messages: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: 'Message',
+            },
+        ],
     }
 );
 
