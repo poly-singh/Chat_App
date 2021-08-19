@@ -2,39 +2,68 @@ const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const User  = require('../models/User');
 const Message = require('../models/Message');
-const Conversation = require('../models/Conversation')
 
 const resolvers = {
-    Query:{ 
+    Query:{
+        users: async () => {
+            return User.find().populate('messages');
+        }, 
         user: async (parent, { username }) => {
-            return User.findOne({ username });
+            return User.findOne({ username }).populate('messages');;
         },
-        // Finds all messages the belong to the active conversation.
-        messages: async (parent, args, context) => {
-            return Message.find({conversationId: args._id});
+        messages: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Message.find(params).sort({ createdAt: -1 });
         },
-        // Finds all conversations that the user is included in.
-        conversations: async (parent, args, context) => {
-            return Conversation.find({_id: {$in: members}});
+        // Find all messages.
+        message: async (parent, { messageId }) => {
+            return Thought.findOne({ _id: messageId });
         },
-
     },
     Mutation:{
-        addUser: async (parent, args, context)=> {
-            const user = await User.create(args)
+        addUser: async (parent, {username, email, password}, context)=> {
+            const user = await User.create({username, email, password})
             const token = signToken(user);
             return { token, user };
         },
 
-        addMessage: async (parent, args, context) => {
-            const message = await Message.create(args)
-            return message
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+    
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+    
+            const correctPw = await user.isCorrectPassword(password);
+    
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+
+            const token = signToken(user);
+    
+            return { token, user };
         },
 
-        addConversation: async (parent, args, context) => {
-            const conversation = await Conversation.create(args)
-            return conversation
-        }
+        addMessage: async (parent, { messageText }, context) => {
+            if (!context.user) {
+            const message = await Message.create({
+                messageText,
+                // messageAuthor: context.user.username,
+                messageAuthor: "test2",
+            });
+    
+            await User.findOneAndUpdate(
+                // { _id: context.user._id },
+                { _id: "611dd4a2064a8e431c2c34fc" },
+                { $addToSet: { message: message._id } }
+            );
+    
+            return message;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
     }
 }
 

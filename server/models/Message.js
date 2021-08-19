@@ -1,22 +1,26 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const MessageSchema = new Schema(
     {
-        conversationId: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Conversation'
-            }
-        ],
-        author: {
+        messageText: {
             type: String,
+            required: 'You need to add a message',
+            minlength: 1,
+            maxlength: 280,
+            trim: true,
         },
-        content: {
+        messageAuthor: {
             type: String,
+            required: true,
+            trim: true,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (timestamp) => dateFormat(timestamp),
         },
     },
-    // Add timestamps for when messages are sent and/or updated.
-    { timestamps: true }
 );
 
 const Message = model('Message', MessageSchema);
