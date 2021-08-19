@@ -49,13 +49,13 @@ const resolvers = {
             if (!context.user) {
             const message = await Message.create({
                 messageText,
-                // messageAuthor: context.user.username,
-                messageAuthor: "test2",
+                messageAuthor: context.user.username,
+                // messageAuthor: "test2",
             });
     
             await User.findOneAndUpdate(
-                // { _id: context.user._id },
-                { _id: "611dd4a2064a8e431c2c34fc" },
+                { _id: context.user._id },
+                // { _id: "611dd4a2064a8e431c2c34fc" },
                 { $addToSet: { message: message._id } }
             );
     
