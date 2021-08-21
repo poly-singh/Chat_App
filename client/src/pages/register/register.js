@@ -44,7 +44,7 @@ const Register = () => {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginLogo">Chat App</h3>
-          <span className="loginDesc">description</span>
+          <span className="loginDesc">Become a Chatter today!</span>
         </div>
         <div className="loginRight">
           <div className="loginBox">
