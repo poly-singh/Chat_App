@@ -1,5 +1,6 @@
 import "./navbar.css";
-import { Search, AccountBox, People, Chat } from "@material-ui/icons";
+// Removed Search, and People
+import { AccountBox, Chat } from "@material-ui/icons";
 
 export default function Navbar() {
   return (
@@ -8,10 +9,10 @@ export default function Navbar() {
         <span className="logo">Chat App</span>
       </div>
       <div className="navbarCenter">
-        <div className="searchbar">
+        {/* <div className="searchbar">
           <Search />
           <input placeholder="Search for Chatters" className="searchInput" />
-        </div>
+        </div> */}
       </div>
       <div className="navbarRight">
         <div className="navbarIcons">
@@ -19,16 +20,16 @@ export default function Navbar() {
             <Chat />
             <span className="navbarIconBadge">Chat</span>
           </div>
-          <div className="navbarIconItem">
+          {/* <div className="navbarIconItem">
             <People />
             <span className="navbarIconBadge">Friends</span>
-          </div>
+          </div> */}
           <div className="navbarIconItem">
             <AccountBox />
             <span className="navbarIconBadge">Profile</span>
           </div>
         </div>
-        <img src="" alt="" className="navbarImg" />
+        {/* <img src="" alt="" className="navbarImg" /> */}
       </div>
     </div>
   );

@@ -1,3 +1,12 @@
+form {
+  height: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .login {
   width: 100vw;
   height: 100vh;
@@ -46,6 +55,7 @@
   height: 50px;
   border: 10px;
   border: 1px solid gray;
+  border-radius: 10px;
   font-size: 18px;
   padding-left: 20px;
 }
@@ -65,7 +75,7 @@
   cursor: pointer;
 }
 
-.loginForgot {
+.loginForgotten {
   text-align: center;
   color: #a6d1ea;
 }

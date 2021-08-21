@@ -14,7 +14,7 @@ import ChatHomepage from "./pages/chat/chatHomepage";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import Profile from "./pages/profile/profile";
-import Navbar from "./components/navbar/Navbar";
+// import Navbar from "./components/navbar/Navbar";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
