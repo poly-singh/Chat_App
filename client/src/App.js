@@ -1,6 +1,9 @@
 // import logo from './logo.svg';
 // import './App.css';
 import ChatHomepage from "./pages/chat/chatHomepage";
+import Login from "./pages/login/login";
+import Register from "./pages/register/register";
+import Profile from "./pages/profile/profile";
 
 function App() {
   return <ChatHomepage />;
