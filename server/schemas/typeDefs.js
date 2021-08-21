@@ -27,12 +27,19 @@ const typeDefs = gql`
         user(username: String!): User
         messages(username: String): [Message]
         message(messageId: ID!): Message
+        allMessages:[Message]
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         addMessage(messageText: String!): Message
+    }
+
+    type Subscription {
+        messages:Message
+
+
     }
 `;
 
