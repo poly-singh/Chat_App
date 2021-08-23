@@ -48,12 +48,15 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
+            {/* <ChatHomepage /> */}
             {user ? <ChatHomepage /> : <Login />}
           </Route>
           <Route exact path="/login">
+            {/* <Login /> */}
             {user ? <Redirect to="/" /> : <Login />}
           </Route>
           <Route exact path="/register">
+            {/* <Register /> */}
             {user ? <Redirect to="/" /> : <Register />}
           </Route>
           {/* <Route exact path="/profiles/:username">
