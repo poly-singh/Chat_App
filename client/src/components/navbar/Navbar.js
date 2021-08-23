@@ -1,6 +1,6 @@
 import "./navbar.css";
-// Removed Search, and People
-import { AccountBox, Chat } from "@material-ui/icons";
+// Removed AccountBox, Search, and People
+import { Chat, PowerSettingsNew } from "@material-ui/icons";
 
 export default function Navbar() {
   return (
@@ -25,8 +25,8 @@ export default function Navbar() {
             <span className="navbarIconBadge">Friends</span>
           </div> */}
           <div className="navbarIconItem">
-            <AccountBox />
-            <span className="navbarIconBadge">Profile</span>
+            <PowerSettingsNew />
+            <span className="navbarIconBadge">Logout</span>
           </div>
         </div>
         {/* <img src="" alt="" className="navbarImg" /> */}

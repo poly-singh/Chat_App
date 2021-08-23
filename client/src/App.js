@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import React from "react";
+import React, { useContext } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,12 +8,18 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 import ChatHomepage from "./pages/chat/chatHomepage";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-import Profile from "./pages/profile/profile";
+import { Context } from "./utils/context";
+// import Profile from "./pages/profile/profile";
 // import Navbar from "./components/navbar/Navbar";
 
 const httpLink = createHttpLink({
@@ -36,26 +42,24 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const { user } = useContext(Context);
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          {/* <Navbar /> */}
-          <div>
-            <Route exact path="/">
-              <ChatHomepage />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/profiles/:username">
+        <Switch>
+          <Route exact path="/">
+            {user ? <ChatHomepage /> : <Login />}
+          </Route>
+          <Route exact path="/login">
+            {user ? <Redirect to="/" /> : <Login />}
+          </Route>
+          <Route exact path="/register">
+            {user ? <Redirect to="/" /> : <Register />}
+          </Route>
+          {/* <Route exact path="/profiles/:username">
               <Profile />
-            </Route>
-          </div>
-        </div>
+            </Route> */}
+        </Switch>
       </Router>
     </ApolloProvider>
   );
