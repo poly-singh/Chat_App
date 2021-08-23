@@ -1,5 +1,5 @@
 import "./navbar.css";
-// Removed AccountBoxS, earch, and People
+// Removed AccountBox, Search, and People
 import { Chat, PowerSettingsNew } from "@material-ui/icons";
 
 export default function Navbar() {
