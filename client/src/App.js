@@ -1,12 +1,10 @@
 // import logo from './logo.svg';
 // import './App.css';
 import React, { useState, useContext } from "react";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { split, HttpLink } from "@apollo/client";
+import { getMainDefinition } from "@apollo/client/utilities";
+import { WebSocketLink } from "@apollo/client/link/ws";
 import { setContext } from "@apollo/client/link/context";
 import {
   BrowserRouter as Router,
@@ -22,8 +20,15 @@ import { Context } from "./utils/context";
 // import Profile from "./pages/profile/profile";
 // import Navbar from "./components/navbar/Navbar";
 
-const httpLink = createHttpLink({
-  uri: "/graphql",
+const httpLink = new HttpLink({
+  uri: "http://localhost:4000/graphql",
+});
+
+const wsLink = new WebSocketLink({
+  uri: "ws://localhost:4000/graphql",
+  options: {
+    reconnect: true,
+  },
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -36,29 +41,55 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const httpAuthLink = authLink.concat(httpLink);
+
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
+    );
+  },
+  wsLink,
+  httpAuthLink
+);
+
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: splitLink,
   cache: new InMemoryCache(),
 });
 
 function App() {
   // const { user } = useContext(Context);
-  const [ user, setUser] = useState()
+  const [user, setUser] = useState();
   return (
     <ApolloProvider client={client}>
       <Router>
         <Switch>
           <Route exact path="/">
             {/* <ChatHomepage /> */}
-            {localStorage.getItem("id_token") ? <ChatHomepage user={user} /> : <Login setUser={setUser}/>}
+            {localStorage.getItem("id_token") ? (
+              <ChatHomepage user={user} />
+            ) : (
+              <Login setUser={setUser} />
+            )}
           </Route>
           <Route exact path="/login">
             {/* <Login /> */}
-            {localStorage.getItem("id_token") ? <Redirect to="/" /> : <Login setUser={setUser}/>}
+            {localStorage.getItem("id_token") ? (
+              <Redirect to="/" />
+            ) : (
+              <Login setUser={setUser} />
+            )}
           </Route>
           <Route exact path="/register">
             {/* <Register /> */}
-            {localStorage.getItem("id_token") ? <Redirect to="/" /> : <Register />}
+            {localStorage.getItem("id_token") ? (
+              <Redirect to="/" />
+            ) : (
+              <Register />
+            )}
           </Route>
           {/* <Route exact path="/profiles/:username">
               <Profile />

@@ -92,4 +92,9 @@ form {
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.loginRegisterButton:hover {
+  opacity: 1;
 }

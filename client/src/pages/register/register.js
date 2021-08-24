@@ -43,7 +43,7 @@ const Register = () => {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Chat App</h3>
+          <h3 className="loginLogo">Chatter Box</h3>
           <span className="loginDesc">Become a Chatter today!</span>
         </div>
         <div className="loginRight">
