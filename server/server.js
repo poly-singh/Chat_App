@@ -24,7 +24,14 @@ const server = new ApolloServer({
   schema
 });
 
+<<<<<<< HEAD
 server.start()
+=======
+// socket.io
+// const io = require("./config/io-config")(server);
+// require("./controllers/socketController")(io);
+
+>>>>>>> main
 server.applyMiddleware({ app });
 
 // // socket.io

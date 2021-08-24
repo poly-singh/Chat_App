@@ -46,12 +46,12 @@
   margin-right: 15px;
   cursor: pointer;
   position: relative;
+  color: #417fa3;
 }
 
-/* .navbarIconBadge {
-  display: flex;
-  align-items: center;
-} */
+.navbarIconBadge {
+  color: white;
+}
 
 .navbarImg {
   width: 32px;

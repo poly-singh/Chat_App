@@ -5,6 +5,7 @@ import image from "../../chat-app-logo.jpg"
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
+// import { Context } from "../../utils/context";
 
 import Auth from "../../utils/auth";
 
@@ -12,6 +13,7 @@ import Auth from "../../utils/auth";
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  // const [state, dispach] = Context()
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -33,6 +35,8 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
+      props.setUser(data.login)
+      // dispach({type: "LOGIN_SUCCESS", payload: data.login})
     } catch (e) {
       console.error(e);
     }
@@ -80,7 +84,7 @@ const Login = (props) => {
                 />
                 <button className="loginButton">Log In</button>
                 <span className="loginForgotten">Forgot Password?</span>
-                <button className="loginRegisterButton">
+                <button href="/register" className="loginRegisterButton">
                   Create a New Account
                 </button>
               </form>
