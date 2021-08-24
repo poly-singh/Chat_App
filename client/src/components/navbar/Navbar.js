@@ -1,6 +1,7 @@
 import "./navbar.css";
 // Removed AccountBox, Search, and People
 import { Chat, PowerSettingsNew } from "@material-ui/icons";
+import AuthService from "../../utils/auth"
 
 export default function Navbar() {
   return (
@@ -18,7 +19,7 @@ export default function Navbar() {
         <div className="navbarIcons">
           <div className="navbarIconItem">
             <Chat />
-            <span className="navbarIconBadge">Chat</span>
+            <a href="/" ><span className="navbarIconBadge">Chat</span></a>
           </div>
           {/* <div className="navbarIconItem">
             <People />
@@ -26,7 +27,7 @@ export default function Navbar() {
           </div> */}
           <div className="navbarIconItem">
             <PowerSettingsNew />
-            <span className="navbarIconBadge">Logout</span>
+            <span onClick={() => AuthService.logout()} className="navbarIconBadge">Logout</span>
           </div>
         </div>
         {/* <img src="" alt="" className="navbarImg" /> */}
