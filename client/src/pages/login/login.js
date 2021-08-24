@@ -1,6 +1,7 @@
 import "./login.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import image from "../../chat-app-logo.jpg"
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
@@ -49,6 +50,9 @@ const Login = (props) => {
         <div className="loginLeft">
           <h3 className="loginLogo">Chat App</h3>
           <span className="loginDesc">Become a Chatter today!</span>
+          <div>
+            <img class="chat-app-logo" src={image} alt="chat_app"/>
+          </div>
         </div>
         <div className="loginRight">
           <div className="loginBox">
