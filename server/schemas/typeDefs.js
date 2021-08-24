@@ -37,10 +37,11 @@ const typeDefs = gql`
     }
 
     type Subscription {
-        messages:Message
-
-
+        newMessage:Message!
     }
+
+
+    
 `;
 
 module.exports = typeDefs;
