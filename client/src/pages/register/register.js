@@ -81,10 +81,6 @@ const Register = () => {
                 <button className="loginButton" type="submit">
                   Sign Up
                 </button>
-                {/* TODO: need to take user to the login page */}
-                <button className="loginRegisterButton">
-                  Log into Account
-                </button>
               </form>
             )}
             {error && (
@@ -92,6 +88,11 @@ const Register = () => {
                 {error.message}
               </div>
             )}
+            <Link to="/login">
+              <button className="loginRegisterButton">
+              Log into Account
+              </button>
+            </Link>
           </div>
         </div>
       </div>

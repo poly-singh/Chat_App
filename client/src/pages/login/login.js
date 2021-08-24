@@ -94,9 +94,8 @@ const Login = (props) => {
                 {error.message}
               </div>
             )}
-
-            <Link>
-              <button to="/register" className="loginRegisterButton">
+            <Link to="/register">
+              <button className="loginRegisterButton">
                 Create a New Account
               </button>
             </Link>
