@@ -16,6 +16,11 @@ form {
   justify-content: center;
 }
 
+.chat-app-logo{
+  width: 80%;
+  height: 80%;
+}
+
 .loginWrapper {
   width: 70%;
   height: 70%;
