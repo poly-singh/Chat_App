@@ -1,8 +1,8 @@
 {
-  "name": "00-practice-app",
+  "name": "chat-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:4000/",
   "dependencies": {
     "@apollo/client": "^3.4.8",
     "@material-ui/core": "^4.12.3",
