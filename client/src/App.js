@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import {
   ApolloClient,
   InMemoryCache,
@@ -42,22 +42,23 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const { user } = useContext(Context);
+  // const { user } = useContext(Context);
+  const [ user, setUser] = useState()
   return (
     <ApolloProvider client={client}>
       <Router>
         <Switch>
           <Route exact path="/">
             {/* <ChatHomepage /> */}
-            {user ? <ChatHomepage /> : <Login />}
+            {localStorage.getItem("id_token") ? <ChatHomepage user={user} /> : <Login setUser={setUser}/>}
           </Route>
           <Route exact path="/login">
             {/* <Login /> */}
-            {user ? <Redirect to="/" /> : <Login />}
+            {localStorage.getItem("id_token") ? <Redirect to="/" /> : <Login setUser={setUser}/>}
           </Route>
           <Route exact path="/register">
             {/* <Register /> */}
-            {user ? <Redirect to="/" /> : <Register />}
+            {localStorage.getItem("id_token") ? <Redirect to="/" /> : <Register />}
           </Route>
           {/* <Route exact path="/profiles/:username">
               <Profile />

@@ -15,8 +15,8 @@ const server = new ApolloServer({
 });
 
 // socket.io
-const io = require("./config/io-config")(server);
-require("./controllers/socketController")(io);
+// const io = require("./config/io-config")(server);
+// require("./controllers/socketController")(io);
 
 server.applyMiddleware({ app });
 
