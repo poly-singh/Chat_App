@@ -21,11 +21,11 @@ import { Context } from "./utils/context";
 // import Navbar from "./components/navbar/Navbar";
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "/graphql",
 });
 
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:4000/graphql",
+  uri: "/graphql",
   options: {
     reconnect: true,
   },
