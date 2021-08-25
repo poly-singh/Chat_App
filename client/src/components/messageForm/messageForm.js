@@ -63,8 +63,8 @@ const MessageForm = () => {
   return (
     <div>
       {/* {localStorage.getItem("id_token") ? ( */}
-      {/* {Auth.loggedIn() ? ( */}
-        {Auth.getProfile().data ? (
+      {/* {Auth.getProfile().data ? ( */}
+      {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${
