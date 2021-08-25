@@ -43,7 +43,9 @@ const Register = () => {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Chatter Box</h3>
+          <h3 className="loginLogo">
+            Chatter <h3 className="box">Box</h3>
+          </h3>
           <span className="loginDesc">Become a Chatter today!</span>
         </div>
         <div className="loginRight">
@@ -89,9 +91,7 @@ const Register = () => {
               </div>
             )}
             <Link to="/login">
-              <button className="loginRegisterButton">
-              Log into Account
-              </button>
+              <button className="loginRegisterButton">Log into Account</button>
             </Link>
           </div>
         </div>
