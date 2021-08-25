@@ -22,6 +22,7 @@ import { Context } from "./utils/context";
 
 const httpLink = new HttpLink({
   uri: (process.env.GRAPHQL_API)? `http://${process.env.GRAPHQL_API}:4000/graphql`: "http://localhost:4000/graphql",
+
 });
 
 const wsLink = new WebSocketLink({
@@ -61,6 +62,7 @@ const client = new ApolloClient({
 });
 
 function App() {
+  console.log(process.env.GRAPHQL_API);
   // const { user } = useContext(Context);
   const [user, setUser] = useState();
   return (
