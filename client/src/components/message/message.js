@@ -9,7 +9,7 @@ const Message = ({ own, messageAuthor, messageText }) => {
       <div className="messageTop">
         {/* <img className="messageImg" src="" alt="" /> */}
         <div class="user">
-          <p className="username">{username}</p>
+          <p className="username">{messageAuthor}</p>
         </div>
         <p className="messageText">{messageText}</p>
       </div>
