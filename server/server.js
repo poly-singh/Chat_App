@@ -14,7 +14,7 @@ const typeDefs = require("./schemas/typeDefs");
 const { signToken } = require("./utils/auth");
 
 (async () => {
-  const PORT = 4000;
+  const PORT = process.env.PORT || 4000;
   const pubsub = new PubSub();
   const app = express();
   const httpServer = createServer(app);
