@@ -72,7 +72,7 @@ const MessageForm = () => {
           <form className="formBox" onSubmit={handleFormSubmit}>
             <div className="chatBoxBottom">
               <textarea
-                // name="messageText"
+                name="messageText"
                 placeholder="commence the chattering..."
                 value={messageText}
                 className="chatMessageInput"
