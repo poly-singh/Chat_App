@@ -20,6 +20,8 @@
   color: white;
   max-width: 100px;
   opacity: 0.8;
+  margin-right: 3px;
+  margin-left: 3px;
 }
 
 .messageImg {

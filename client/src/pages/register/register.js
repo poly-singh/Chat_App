@@ -46,7 +46,7 @@ const Register = () => {
           <h3 className="loginLogo">
             Chatter <h3 className="box">Box</h3>
           </h3>
-          <span className="loginDesc">Become a Chatter today!</span>
+          <span className="registerDesc">Become a Chatter today!</span>
         </div>
         <div className="loginRight">
           <div className="loginBox">
