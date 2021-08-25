@@ -16,7 +16,7 @@ form {
   justify-content: center;
 }
 
-.chat-app-logo{
+.chat-app-logo {
   width: 80%;
   height: 80%;
 }
@@ -40,11 +40,25 @@ form {
   font-weight: 800;
   color: #a6d1ea;
   margin-bottom: 10px;
+  display: flex;
+}
+
+.box {
+  font-size: 50px;
+  font-weight: 800;
+  color: #a6d1ea;
+  margin-bottom: 10px;
+  background-color: #417fa3;
+  margin-top: 0px;
+  margin-left: 15px;
+
+  padding-right: 4px;
 }
 
 .loginDesc {
   font-size: 24px;
   color: darkgray;
+  margin-left: 25px;
 }
 
 .loginBox {
@@ -79,10 +93,11 @@ form {
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 .loginButton:hover {
-  opacity: 1;
+  /* opacity: 1; */
+  background-color: #417fa3;
 }
 
 .loginForgotten {

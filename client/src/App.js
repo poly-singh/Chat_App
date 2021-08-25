@@ -21,12 +21,12 @@ import { Context } from "./utils/context";
 // import Navbar from "./components/navbar/Navbar";
 
 const httpLink = new HttpLink({
-  uri: (process.env.GRAPHQL_API)? `http://${process.env.GRAPHQL_API}:4000/graphql`: "http://localhost:4000/graphql",
+  uri: (process.env.REACT_APP_GRAPHQL_API)? `http://${process.env.REACT_APP_GRAPHQL_API}:4000/graphql`: "http://localhost:4000/graphql",
 
 });
 
 const wsLink = new WebSocketLink({
-  uri: (process.env.GRAPHQL_API) ? `ws://${process.env.GRAPHQL_API}:4000/graphql` :"ws://localhost:4000/graphql",
+  uri: (process.env.REACT_APP_GRAPHQL_API) ? `ws://${process.env.REACT_APP_GRAPHQL_API}:4000/graphql` :"ws://localhost:4000/graphql",
   options: {
     reconnect: true,
   },
@@ -62,7 +62,7 @@ const client = new ApolloClient({
 });
 
 function App() {
-  console.log(process.env.GRAPHQL_API);
+  console.log(process.env.REACT_APP_GRAPHQL_API);
   // const { user } = useContext(Context);
   const [user, setUser] = useState();
   return (
