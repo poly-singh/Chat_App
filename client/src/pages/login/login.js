@@ -1,6 +1,7 @@
 import "./login.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import image from "../../chat-app-logo.jpg"
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
@@ -34,7 +35,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-      props.setUser(data.login)
+      props.setUser(data.login);
       // dispach({type: "LOGIN_SUCCESS", payload: data.login})
     } catch (e) {
       console.error(e);
@@ -51,8 +52,11 @@ const Login = (props) => {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Chat App</h3>
+          <h3 className="loginLogo">Chatter Box</h3>
           <span className="loginDesc">Become a Chatter today!</span>
+          <div>
+            <img class="chat-app-logo" src={image} alt="chat_app"/>
+          </div>
         </div>
         <div className="loginRight">
           <div className="loginBox">
@@ -79,10 +83,10 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button className="loginButton">Log In</button>
-                <span className="loginForgotten">Forgot Password?</span>
-                <button href="/register" className="loginRegisterButton">
-                  Create a New Account
-                </button>
+                <span className="loginForgotten">Make a New Account?</span>
+                {/* <button href="/register" className="loginRegisterButton">
+                  Register
+                </button> */}
               </form>
             )}
             {error && (
@@ -90,6 +94,11 @@ const Login = (props) => {
                 {error.message}
               </div>
             )}
+            <Link to="/register">
+              <button className="loginRegisterButton">
+                Create a New Account
+              </button>
+            </Link>
           </div>
         </div>
       </div>

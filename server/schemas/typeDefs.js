@@ -27,6 +27,7 @@ const typeDefs = gql`
         user(username: String!): User
         messages(username: String): [Message]
         message(messageId: ID!): Message
+        allMessages:[Message]
     }
 
     type Mutation {
@@ -34,6 +35,13 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addMessage(messageText: String!): Message
     }
+
+    type Subscription {
+        newMessage:Message!
+    }
+
+
+    
 `;
 
 module.exports = typeDefs;

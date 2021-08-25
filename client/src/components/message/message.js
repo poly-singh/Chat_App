@@ -1,11 +1,18 @@
 import "./message.css";
+import Auth from "../../utils/auth";
 
-const Message = ({ own }) => {
+const Message = ({ own, messageAuthor, messageText }) => {
+  console.log(own, "===own===");
+  const { username } = Auth.getProfile().data;
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
-        <img className="messageImg" src="" alt="" />
-        <p className="messageText">Hello. This is my message.</p>
+        {/* <img className="messageImg" src="" alt="" /> */}
+        <div class="username">
+          <p className="username">{username}</p>
+        </div>
+        <p className="messageText">{messageText}</p>
+        
       </div>
       <div className="messageBottom"></div>
     </div>

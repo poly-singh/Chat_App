@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.logo:hover {
+  color: #417fa3;
+}
+
 .navbarCenter {
   flex: 5;
 }
@@ -50,6 +54,14 @@
 }
 
 .navbarIconBadge {
+  color: #417fa3;
+  opacity: 0.8;
+}
+.navbarIconBadge:hover {
+  opacity: 1;
+}
+
+.navWords {
   color: white;
 }
 
