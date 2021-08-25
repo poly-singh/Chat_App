@@ -7,9 +7,9 @@ export const QUERY_USER = gql`
             username
             email
             messages {
-                    _id
-                    messageText
-                    createdAt
+                _id
+                messageText
+                createdAt
             }
         }
     }
