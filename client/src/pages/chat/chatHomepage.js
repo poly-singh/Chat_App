@@ -5,7 +5,7 @@ import { useQuery, gql } from "@apollo/client";
 
 import Navbar from "../../components/navbar/Navbar";
 import Message from "../../components/message/message";
-import MessageForm from "../../components/messageForm/messageForm"
+import MessageForm from "../../components/messageForm/messageForm";
 import Auth from "../../utils/auth";
 import "./chatHomepage.css";
 
@@ -57,16 +57,13 @@ const ChatHomepage = ({ user }) => {
           <div className="chatBoxWrapper">
             <div className="chatBoxTop">{messageMap}</div>
             {/* <div className="chatBoxBottom"> */}
-
             {/* Message submission form */}
-            < MessageForm />
-
+            <MessageForm />
             {/* <textarea
               className="chatMessageInput"
               placeholder="commence the chattering..."
             ></textarea>
             <button className="chatSendButton">Send</button> */}
-
 
             {/* </div> */}
           </div>

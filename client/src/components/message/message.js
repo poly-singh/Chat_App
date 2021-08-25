@@ -8,11 +8,10 @@ const Message = ({ own, messageAuthor, messageText }) => {
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
         {/* <img className="messageImg" src="" alt="" /> */}
-        <div class="username">
+        <div class="user">
           <p className="username">{username}</p>
         </div>
         <p className="messageText">{messageText}</p>
-        
       </div>
       <div className="messageBottom"></div>
     </div>

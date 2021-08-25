@@ -1,31 +1,36 @@
 .chatBoxBottom {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .chatMessageInput {
-    width: 100%;
-    height: 90px;
-    padding: 10px;
-  }
-  
-  .chatMessageInput:focus {
-    outline: none;
-  }
-  
-  .chatSendButton {
-    width: 70px;
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-    background-color: #417fa3;
-    cursor: pointer;
-    color: white;
-    opacity: 0.8;
-  }
-  
-  .chatSendButton:hover {
-    opacity: 1;
-  }
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+}
+
+.chatMessageInput:focus {
+  outline: none;
+}
+
+.chatSendButton {
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #417fa3;
+  cursor: pointer;
+  color: white;
+  opacity: 0.8;
+  margin: 4px;
+}
+
+.chatSendButton:hover {
+  opacity: 1;
+}
+
+.formBox {
+  height: 125px;
+}
