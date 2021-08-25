@@ -1,4 +1,4 @@
-// import "./messageForm.css";
+import "./messageForm.css";
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -62,6 +62,8 @@ const MessageForm = () => {
 
   return (
     <div>
+      {/* {localStorage.getItem("id_token") ? ( */}
+      {/* {Auth.getProfile().data ? ( */}
       {Auth.loggedIn() ? (
         <>
           <p

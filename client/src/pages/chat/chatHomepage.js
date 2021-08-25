@@ -11,7 +11,7 @@ import "./chatHomepage.css";
 
 const ChatHomepage = ({ user }) => {
   const { username } = Auth.getProfile().data;
-  console.log(user, "user here");
+  console.log(username, "user here");
   const { data, loading, subscribeToMore } = useQuery(GET_MESSAGES);
   useEffect(() => {
     subscribeToMore({

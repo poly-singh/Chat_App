@@ -1,7 +1,7 @@
 const { createServer } = require("http");
 const express = require("express");
 const { execute, subscribe } = require("graphql");
-const { ApolloServer, gql } = require("apollo-server-express");
+const { ApolloServer, gql, AuthenticationError } = require("apollo-server-express");
 const { PubSub } = require("graphql-subscriptions");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 const { makeExecutableSchema } = require("@graphql-tools/schema");
@@ -67,6 +67,7 @@ const { signToken } = require("./utils/auth");
 
       addMessage: async (parent, { messageText }, context) => {
         // TODO
+        console.log(context, context.user, context.data, context.username)
         if (!context.user) {
           // remove the "!" for auth to work!!!
           const message = await Message.create({
@@ -76,6 +77,7 @@ const { signToken } = require("./utils/auth");
           });
 
           const userMessage = await User.findOneAndUpdate(
+          // await User.findOneAndUpdate(
             // { _id: context.user._id },
             { _id: "612449f2d9323303a4374fd1" }, // Comment out in prod
             { $addToSet: { messages: message._id } }
