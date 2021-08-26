@@ -35,7 +35,8 @@ const MessageForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addMessage({
+      // const { data } = await addMessage({
+      await addMessage({
         variables: {
           messageText,
           messageAuthor: Auth.getProfile().data.username,

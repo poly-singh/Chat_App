@@ -1,9 +1,9 @@
 import "./message.css";
-import Auth from "../../utils/auth";
+// import Auth from "../../utils/auth";
 
 const Message = ({ own, messageAuthor, messageText }) => {
   console.log(own, "===own===");
-  const { username } = Auth.getProfile().data;
+  // const { username } = Auth.getProfile().data;
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">

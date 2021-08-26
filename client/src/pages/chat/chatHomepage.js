@@ -25,7 +25,8 @@ const ChatHomepage = ({ user }) => {
         return updatedMessageList;
       },
     });
-  }, []);
+  }, );
+  // }, []);
 
   if (!loading) {
     var messageMap = data.messages.map((message) => {
