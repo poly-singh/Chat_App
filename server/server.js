@@ -103,12 +103,14 @@ const { signToken } = require("./utils/auth");
     context: authMiddleware,
   });
 
+  // Adding typeDefs, resolvers, context: authMiddleware solves the auth error when submitting a post, buit causes duplicates.
   const server = new ApolloServer({
     // schema,
     typeDefs,
     resolvers,
     context: authMiddleware,
   });
+
   await server.start();
   server.applyMiddleware({ app });
   app.use(express.urlencoded({ extended: false }));
