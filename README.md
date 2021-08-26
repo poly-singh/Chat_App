@@ -43,9 +43,17 @@ No tests are currently included.
 - npm install
 - npm start
 
-## Usage
+## Usage and Screenshots
 
 Login/signup into the application.Send and receives messages from any user.
+
+### Screenshots
+
+![login](./client/public/images/login.png)
+![signup](./client/public/images/signup.png)
+![chat](./client/public/images/chat.png)
+
+
 
 ## Contributions:
 Techonologies used React,graphql, graphql-subscription,mongodb,jwt,apollo-server,node,express,CSS
@@ -63,7 +71,7 @@ Techonologies used React,graphql, graphql-subscription,mongodb,jwt,apollo-server
 - Email: <aldwin.lub@gmail.com><br><br>
 
 ## License:
-Covered under the [MIT License]
+Covered under the [MIT License](https://github.com/poly-singh/Chat_App/blob/main/LICENSE)
 
 
 
