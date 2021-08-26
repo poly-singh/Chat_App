@@ -58,7 +58,7 @@ form {
 .loginDesc {
   font-size: 24px;
   color: darkgray;
-  margin-left: 25px;
+  /* margin-left: 0px; */
 }
 
 .loginBox {

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { split, HttpLink } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
@@ -16,26 +16,29 @@ import {
 import ChatHomepage from "./pages/chat/chatHomepage";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-import { Context } from "./utils/context";
+// import { Context } from "./utils/context";
 // import Profile from "./pages/profile/profile";
 // import Navbar from "./components/navbar/Navbar";
 
+
+const token = localStorage.getItem("id_token");
+
 const httpLink = new HttpLink({
   // uri: (process.env.GRAPHQL_API)? `http://${process.env.GRAPHQL_API}:4000/graphql`: "http://localhost:4000/graphql",
-  uri: "http://localhost:4000/graphql",
+  uri: `http://localhost:4000/graphql?token=${token}`
 
 });
 
 const wsLink = new WebSocketLink({
   // uri: (process.env.GRAPHQL_API) ? `ws://${process.env.GRAPHQL_API}:4000/graphql` :"ws://localhost:4000/graphql",
-  uri: "ws://localhost:4000/graphql",
+  uri: `ws://localhost:4000/graphql?token=${token}`,
   options: {
     reconnect: true,
   },
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+//   const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,

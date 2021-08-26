@@ -67,19 +67,20 @@ const { signToken } = require("./utils/auth");
 
       addMessage: async (parent, { messageText }, context) => {
         // TODO
-        console.log(context, context.user, context.data, context.username)
-        if (!context.user) {
+        // console.log(context, context.user, context.data, context.username)
+        if (context.user) {
           // remove the "!" for auth to work!!!
           const message = await Message.create({
             messageText,
-            // messageAuthor: context.user.username,
-            messageAuthor: "aldwin2",
+            messageAuthor: context.user.username,
+            // messageAuthor: "aldwin2",
+            // messageAuthor: "James",
           });
 
           const userMessage = await User.findOneAndUpdate(
           // await User.findOneAndUpdate(
-            // { _id: context.user._id },
-            { _id: "612449f2d9323303a4374fd1" }, // Comment out in prod
+            { _id: context.user._id },
+            // { _id: "6126ca4e8114ba242c245ea4" }, // Comment out in prod
             { $addToSet: { messages: message._id } }
           );
 
@@ -102,9 +103,14 @@ const { signToken } = require("./utils/auth");
     context: authMiddleware,
   });
 
+  // Adding typeDefs, resolvers, context: authMiddleware solves the auth error when submitting a post, buit causes duplicates.
   const server = new ApolloServer({
-    schema,
+    // schema,
+    typeDefs,
+    resolvers,
+    context: authMiddleware,
   });
+
   await server.start();
   server.applyMiddleware({ app });
   app.use(express.urlencoded({ extended: false }));

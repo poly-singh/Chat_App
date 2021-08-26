@@ -53,9 +53,9 @@ const Login = (props) => {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginLogo">
-            Chatter <h3 className="box">Box </h3>
+            Chatter <span className="box">Box </span>
           </h3>
-          <span className="loginDesc">Become a Chatter today!</span>
+          <span className="loginDesc">One Box for Multiple Messages!</span>
           {/* <div>
             <img class="chat-app-logo" src={image} alt="chat_app" />
           </div> */}
